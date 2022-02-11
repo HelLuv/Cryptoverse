@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {BulbOutlined, FundFilled, HomeOutlined, MoneyCollectOutlined} from "@ant-design/icons";
 
 import icon from "../../images/cryptocurrency.png";
+import KeyBuilder from "../../utils/KeyBuilder";
 
 interface NavbarProps {
 
@@ -23,16 +24,16 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         {/*</Button>*/}
       </div>
       <Menu theme="dark">
-        <Menu.Item icon={<HomeOutlined/>}>
+        <Menu.Item icon={<HomeOutlined/>} key={KeyBuilder.build}>
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item icon={<FundFilled/>}>
+        <Menu.Item icon={<FundFilled/>} key={KeyBuilder.build}>
           <Link to="/cryptocurrencies">Cryptocurrencies</Link>
         </Menu.Item>
-        <Menu.Item icon={<MoneyCollectOutlined/>}>
+        <Menu.Item icon={<MoneyCollectOutlined/>} key={KeyBuilder.build}>
           <Link to="/exchanges">Exchanges</Link>
         </Menu.Item>
-        <Menu.Item icon={<BulbOutlined/>}>
+        <Menu.Item icon={<BulbOutlined/>} key={KeyBuilder.build}>
           <Link to="/news">News</Link>
         </Menu.Item>
       </Menu>
