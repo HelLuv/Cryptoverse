@@ -10,4 +10,5 @@ export interface ICoin {
   change: string;
   rank: number;
   twoFourHVolume: string
+  marketCap: string
 }
