@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 interface CryptocurrenciesProps {
-
+  simplified?: boolean;
 }
 
-const Cryptocurrencies: React.FC<CryptocurrenciesProps> = ({}) => {
+const Cryptocurrencies: React.FC<CryptocurrenciesProps> = ({simplified}) => {
 
   return (
     <h1>Cryptocurrencies</h1>
