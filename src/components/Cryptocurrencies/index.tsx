@@ -22,8 +22,10 @@ const Cryptocurrencies: React.FC<CryptocurrenciesProps> = ({simplified}) => {
   React.useEffect(() => {
     setCryptos(cryptoList?.data?.coins ?? []);
 
-    const filteredList = cryptoList?.data?.coins?.filter((item: ICoin) => item?.name.toLowerCase().includes(searchTerm))
-  }, [cryptoList])
+    const filteredList = cryptoList?.data?.coins?.filter((item: ICoin) => item?.name.toLowerCase().includes(searchTerm));
+
+    setCryptos(filteredList)
+  }, [cryptoList, searchTerm])
 
   if (isFetching) return <Loading/>
 

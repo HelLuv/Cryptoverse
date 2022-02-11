@@ -295,16 +295,29 @@ a:hover {
 }
 
 .select-news {
-  width: 180px;
+  width: 200px;
 }
 
 .news-card {
-  min-height: 300px !important;
+  min-height: 312px !important;
+
+  .ant-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 312px;
+    justify-content: space-between;
+  }
 }
+
 
 .news-image-container {
   display: flex !important;
   justify-content: space-between !important;
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
 }
 
 .news-title {
