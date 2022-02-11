@@ -34,5 +34,8 @@ export const cryptoApi = createApi({
 });
 
 export const {
-  useGetCryptosQuery
+  useGetCryptosQuery,
+  useGetCryptoDetailsQuery,
+  useGetExchangesQuery,
+  useGetCryptoHistoryQuery
 } = cryptoApi;
