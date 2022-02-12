@@ -43,11 +43,13 @@ const News: React.FC<NewsProps> = ({simplified}) => {
             filterOption={(input, option) => option?.children?.toLowercase().indexOf(input.toLowerCase()) >= 0}
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
-            {cryptoList?.data?.coins.map((currency: ICoin) => <Option value={currency.name}
-                                                                      key={KeyBuilder.build}>{currency.name}</Option>)}
+            {cryptoList?.data?.coins.map((currency: ICoin) => (
+              <Option value={currency.name} key={KeyBuilder.build}>{currency.name}</Option>
+            ))}
           </Select>
         </Col>
       )}
+
       {(isNewsFetching || !cryptoNews?.value)
         ? <Col xs={24} sm={24} lg={24} key={KeyBuilder.build}> <Loading/></Col>
         : <> {cryptoNews?.value.map((news: INewsItem) => (

@@ -11,6 +11,8 @@ import {
 import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from '../../services/cryptoApi';
 import {Loading} from "../index";
 import {ICoin} from "../../models/ICoins";
+import LineChart from "../LineChart";
+import KeyBuilder from "../../utils/KeyBuilder";
 
 const {Title, Text} = Typography;
 const {Option} = Select;
@@ -26,11 +28,17 @@ const CryptoDetails: React.FC<CryptoDetailsProps> = ({}) => {
   const {coinId} = useParams();
   const [timePeriod, setTimePeriod] = React.useState("7d");
   const {data, isFetching} = useGetCryptoDetailsQuery(coinId);
+  const [coinHistory, setCoinHistory] = React.useState(null);
 
-  const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod});
+  const {data: coinHistoryData, refetch} = useGetCryptoHistoryQuery({coinId, timePeriod});
   const cryptoDetails: ICoin = data?.data?.coin;
 
+  React.useEffect(() => {
+    setCoinHistory(coinHistoryData)
+  }, [timePeriod, coinHistoryData]);
+
   if (isFetching) return <Loading/>
+
 
   const stats = [
     {
@@ -104,7 +112,7 @@ const CryptoDetails: React.FC<CryptoDetailsProps> = ({}) => {
               rank, and trading volume.</p>
           </Col>
           {stats.map(({icon, title, value}) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={KeyBuilder.build}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -120,7 +128,7 @@ const CryptoDetails: React.FC<CryptoDetailsProps> = ({}) => {
               all info about supply.</p>
           </Col>
           {genericStats.map(({icon, title, value}) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={KeyBuilder.build}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
