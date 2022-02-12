@@ -15,6 +15,31 @@ interface ExchangesProps {
 
 }
 
+const mockExchanges: Array<IExchange> = [
+  {
+    uuid: "-zdvbieRdZ",
+    name: "Binance",
+    iconUrl: "https://cdn.coinranking.com/mDTK5qrmq/binance.svg",
+    numberOfMarkets: 1644,
+    "24hVolume": "15506110852",
+    rank: 1,
+    marketShare: "12.22",
+    exchangeScore: "9.9",
+    numberOfCoins: 403,
+  },
+  {
+    uuid: "XHp8eCjIDc",
+    name: "Coinbase Exchange",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/exchanges/64x64/89.png",
+    numberOfMarkets: 474,
+    "24hVolume": "3546590700",
+    rank: 2,
+    marketShare: "10.92",
+    exchangeScore: "8.7",
+    numberOfCoins: 159
+  }
+]
+
 const Exchanges: React.FC<ExchangesProps> = ({}) => {
 
   const {data, isFetching} = useGetExchangesQuery(50);
@@ -23,40 +48,44 @@ const Exchanges: React.FC<ExchangesProps> = ({}) => {
 
   return (
     <>
-      <Row>
-        <Col span={6}>Exchanges</Col>
-        <Col span={6}>24h Trade Volume</Col>
-        <Col span={6}>Markets</Col>
-        <Col span={6}>Change</Col>
+      <Row style={{marginBottom: "12px"}}>
+        <Col span={4}>Exchanges</Col>
+        <Col span={4}>Exchange Score</Col>
+        <Col span={4}>24h Trade Volume</Col>
+        <Col span={4}># Markets</Col>
+        <Col span={4}># Coins</Col>
+        <Col span={4}>Change</Col>
       </Row>
       <Row>
         {
-          exchangesList?.length ? exchangesList?.map((exchange: IExchange) => (
-              <Col span={24} key={KeyBuilder.build}>
-                <Collapse>
-                  <Panel
-                    key={exchange.uuid}
-                    showArrow={false}
-                    header={(
-                      <Row key={exchange.uuid}>
-                        <Col span={6}>
-                          <Text><strong>{exchange.rank}.</strong></Text>
-                          <Avatar className="exchange-image" src={exchange.iconUrl}/>
-                          <Text><strong>{exchange.name}</strong></Text>
-                        </Col>
-                        <Col span={6}>${millify(exchange.volume)}</Col>
-                        <Col span={6}>{millify(exchange.numberOfMarkets)}</Col>
-                        <Col span={6}>{millify(exchange.marketShare)}%</Col>
-                      </Row>
-                    )}
-                  >
-                    {HTMLReactParser(exchange.description || '')}
-                  </Panel>
-                </Collapse>
-              </Col>
-            ))
-            : <h1>This endpoint is disabled for your subscription</h1>
+          mockExchanges?.map((exchange: IExchange) => (
+            <Col span={24} key={KeyBuilder.build}>
+              <Collapse>
+                <Panel
+                  key={exchange.uuid}
+                  showArrow={false}
+                  header={(
+                    <Row key={exchange.uuid} className="exchanges-row">
+                      <Col span={4}>
+                        <Text><strong>{exchange.rank}.</strong></Text>
+                        <Avatar className="exchange-image" src={exchange?.iconUrl}/>
+                        <Text><strong>{exchange.name}</strong></Text>
+                      </Col>
+                      <Col span={4}>{millify(+exchange?.exchangeScore)}</Col>
+                      <Col span={4}>${millify(+exchange["24hVolume"])}</Col>
+                      <Col span={4}>{millify(exchange?.numberOfMarkets)}</Col>
+                      <Col span={4}>{millify(exchange?.numberOfCoins)}</Col>
+                      <Col span={4}>{millify(+exchange?.marketShare)}%</Col>
+                    </Row>
+                  )}
+                >
+                  {HTMLReactParser(exchange.description || '')}
+                </Panel>
+              </Collapse>
+            </Col>
+          ))
         }
+        {!exchangesList?.length && <h1 style={{marginTop: "32px"}}>This endpoint is disabled for your subscription</h1>}
       </Row>
     </>
   )

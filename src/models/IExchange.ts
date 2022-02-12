@@ -1,10 +1,12 @@
 export interface IExchange {
   uuid: string;
   rank: number;
-  iconUrl: string;
+  iconUrl: string | null;
   name: string;
-  volume: number;
+  "24hVolume": string;
   numberOfMarkets: number;
-  marketShare: number;
-  description: string;
+  marketShare: string;
+  description?: string;
+  exchangeScore: string;
+  numberOfCoins: number;
 }
