@@ -4,7 +4,7 @@ import moment from "moment";
 
 import {useGetCryptoNewsQuery} from "../../services/cryptoNewsApi";
 import {useGetCryptosQuery} from "../../services/cryptoApi";
-import {Loading} from "../index";
+import {Loading} from "../../components";
 import {INewsItem} from "../../models/INewsItem";
 import KeyBuilder from "../../utils/KeyBuilder";
 import {ICoin} from "../../models/ICoins";

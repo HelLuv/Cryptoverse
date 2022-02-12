@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Card, Row, Col, Input} from "antd";
 
 import {useGetCryptosQuery} from "../../services/cryptoApi";
-import {Loading} from "../index";
+import {Loading} from "../../components";
 import {ICoin} from "../../models/ICoins";
 import KeyBuilder from "../../utils/KeyBuilder";
 

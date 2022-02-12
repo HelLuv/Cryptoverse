@@ -9,9 +9,8 @@ import {
 } from '@ant-design/icons';
 
 import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from '../../services/cryptoApi';
-import {Loading} from "../index";
+import {Loading, LineChart} from "../../components";
 import {ICoin} from "../../models/ICoins";
-import LineChart from "../LineChart";
 import KeyBuilder from "../../utils/KeyBuilder";
 
 const {Title, Text} = Typography;

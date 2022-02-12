@@ -3,7 +3,8 @@ import {Layout, Space, Typography} from "antd";
 import {Routes, Route, Link} from "react-router-dom";
 
 import "./App.scss";
-import {Navbar, Homepage, Cryptocurrencies, CryptoDetails, Exchanges, News} from "./components";
+import {Navbar} from "./components";
+import {Homepage, Cryptocurrencies, CryptoDetails, Exchanges, News} from "./views";
 
 function App() {
   return (
