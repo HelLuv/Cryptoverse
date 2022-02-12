@@ -101,8 +101,11 @@ const CryptoDetails: React.FC<CryptoDetailsProps> = ({}) => {
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
 
-      <LineChart coinHistory={coinHistory} currentPrice={millify(+cryptoDetails?.price)}
-                 coinName={cryptoDetails?.name}/>
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={millify(+cryptoDetails?.price)}
+        coinName={cryptoDetails?.name}
+      />
 
       <Col className="stats-container">
         <Col className="coin-value-statistics-heading">

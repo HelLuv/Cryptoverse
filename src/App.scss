@@ -71,6 +71,10 @@ a:hover {
   font-size: 1.2rem !important;
   background-color: var(--bgSecondary) !important;
   border: none !important;
+
+  .anticon {
+    vertical-align: 0 !important;
+  }
 }
 
 .loader {
