@@ -26,6 +26,7 @@ const mockExchanges: Array<IExchange> = [
     marketShare: "12.22",
     exchangeScore: "9.9",
     numberOfCoins: 403,
+    description: "Binance is the world’s leading blockchain ecosystem and cryptocurrency infrastructure provider with a financial product suite that includes the largest digital asset exchange."
   },
   {
     uuid: "XHp8eCjIDc",
@@ -36,7 +37,11 @@ const mockExchanges: Array<IExchange> = [
     rank: 2,
     marketShare: "10.92",
     exchangeScore: "8.7",
-    numberOfCoins: 159
+    numberOfCoins: 159,
+    description: "About Coinbase\n" +
+      "We are building the cryptoeconomy – a more fair, accessible, efficient, and transparent financial system enabled by crypto.\n" +
+      "\n" +
+      "We started in 2012 with the radical idea that anyone, anywhere, should be able to easily and securely send and receive Bitcoin. Today, we offer a trusted and easy-to-use platform for accessing the broader cryptoeconomy."
   }
 ]
 
@@ -79,7 +84,7 @@ const Exchanges: React.FC<ExchangesProps> = ({}) => {
                     </Row>
                   )}
                 >
-                  {HTMLReactParser(exchange.description || '')}
+                  {HTMLReactParser(exchange?.description || '')}
                 </Panel>
               </Collapse>
             </Col>

@@ -18,7 +18,7 @@ const Homepage: React.FC<HomepageProps> = ({}) => {
   const {data, isFetching} = useGetCryptosQuery(10);
   const globalStats: IStats = data?.data?.stats;
 
-  if (isFetching) return <Loading/>
+  if (isFetching || !globalStats) return <Loading/>
 
   return (
     <>
